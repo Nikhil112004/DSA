@@ -5,11 +5,12 @@
 var rob = function(nums) {
     let n = nums.length;
     if(n === 1) return nums[0]
-    let dp = [];
-    dp[0] = nums[0];
-    dp[1] = Math.max(nums[0], nums[1]);
+    let a = nums[0];
+    let b = Math.max(nums[0], nums[1]);
     for(let i = 2; i < n; i++) {
-        dp[i] = Math.max(dp[i - 2] + nums[i], dp[i-1]);
+        let ans = Math.max(a + nums[i], b);
+        a = b;
+        b = ans;
     }
-    return dp[n-1];
+    return b;
 };
